@@ -1,29 +1,18 @@
 <!-- core/templates/core/home.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Hub API</title>
-    <style>
-        body { font-family: system-ui, -apple-system, sans-serif; margin: 40px; line-height: 1.6; }
-        .container { max-width: 800px; margin: auto; }
-        .status { padding: 10px 15px; background: #e0f2f1; color: #00695c; border-radius: 5px; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome back, {{ username }}!</h1>
-        <p>You currently have {{ active_courses }} courses in progress.</p>
-        <h3>Upcoming Study Topics:</h3>
-<ul>
-    {% for topic in topics %}
-        <li>{{ topic }}</li>
-    {% endfor %}
-</ul>
-        <div class="status">
-            <strong>System Status:</strong> The HTML template is rendering successfully!
-        </div>
-    </div>
-</body>
+<!-- core/templates/core/home.html -->
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Welcome back, {{ username }}!</h1>
+    <p>You currently have {{ active_courses }} courses in progress.</p>
+    
+    <h3>Upcoming Study Topics:</h3>
+    <ul>
+        {% for topic in topics %}
+            <li>{{ topic }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
 </html>
