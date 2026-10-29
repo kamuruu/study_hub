@@ -20,3 +20,14 @@ class AssignmentAdmin(admin.ModelAdmin):
     list_filter = ('is_completed', 'course')
     list_editable = ('is_completed',)
     date_hierarchy = 'due_date'
+
+from .models import Course, Assignment, Student # <-- Import Student
+
+# ... keep your existing CourseAdmin and AssignmentAdmin ...
+
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'enrollment_date')
+    search_fields = ('first_name', 'last_name')
+    # This creates a great two-column UI for adding/removing courses
+    filter_horizontal = ('courses',)

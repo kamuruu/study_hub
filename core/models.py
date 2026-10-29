@@ -20,3 +20,15 @@ class Assignment(models.Model):
 
     def __str__(self):
         return f"{self.title} ({self.course.title})"
+
+class Student(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    enrollment_date = models.DateField(auto_now_add=True)
+    
+    # This creates the Many-to-Many relationship.
+    # blank=True allows a student to be created without any courses initially.
+    courses = models.ManyToManyField(Course, related_name='students', blank=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
